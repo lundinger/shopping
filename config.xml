@@ -5,10 +5,10 @@
         version   = "1.0.0">
     <preference name="phonegap-version" value="2.9.0" />
 
-    <name>winkelApp</name>
+    <name>winkelen App</name>
 
     <description>
-        <!-- Omschrijving van de App -->
+     Voor het bijhouden van kortingen en andere produktgegevens
     </description>
 
     <author href="http://" email="">
