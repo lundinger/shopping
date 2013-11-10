@@ -3,9 +3,9 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "<!-- id van de App (com.naamontwikkelaar.naamapp) -->"
         version   = "1.0.0">
-    <preference name="phonegap-version" value="2.5.0" />
+    <preference name="phonegap-version" value="2.9.0" />
 
-    <name>BTW app</name>
+    <name>winkelApp</name>
 
     <description>
         <!-- Omschrijving van de App -->
@@ -14,6 +14,8 @@
     <author href="http://" email="">
         <!-- Naam van de ontwikkelaar. -->
     </author>
+	
+	<gap:platform name="ios" />
 
 	<!-- De bounce uitschakelen. -->
     <preference name="webviewbounce" value="false" />
