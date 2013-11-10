@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Optellen</title>
+	
+	<!-- PhoneGap -->
+	<script src="phonegap.js" type="text/javascript"></script>
+
+	<!-- jQuery Mobile -->
+	<link rel="stylesheet" href="css/jquery.mobile.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile.js"></script>
+
+	<!-- Jouw App -->
+	<script src="js/logic.js" type="text/javascript"></script>
+    
+	<link href="css/btw.css" rel="stylesheet" />
+	
+</head>
+
+<body>
+
+<div id="main-container">
+
+<form action"" method="post" id="opteller" name="opteller" data-ajax="false" >
+    <fieldset>
+   		 <legend>Optellen <span class="blauw">&nbsp;&nbsp;&nbsp;Count</span></legend>
+    
+      <div>
+        <input type="text" name="waarde1" id="waarde1"  value="0.00" onFocus="this.value='';" required />
+      </div>
+      
+      <div>
+        <input type="text" name="waarde2" id="waarde2"  value="0.00" onFocus="this.value='';" required/>
+      </div>
+      
+      <div>
+        <input type="text" name="waarde3" id="waarde3"  value="0.00" onFocus="this.value='';" required />
+      </div>
+      
+      <div>
+        <input type="text" name="waarde4" id="waarde4"   value="0.00" onFocus="this.value='';" required/>
+      </div>
+      
+      <div>
+        <input type="text" name="waarde5" id="waarde5"   value="0.00" onFocus="this.value='';" required/>
+      </div>
+      
+      
+      <div> 
+      	<a href="#" class="knop" onClick="Optellen()" title="Optellen">Tel op<span class="blauw">&nbsp;&nbsp;&nbsp;Count</span></a> 
+      </div>
+      
+      <div>
+        <label for="uitkomst">Uitkomst:<span class="blauw">&nbsp;&nbsp;&nbsp;Result:</span></label>
+        <input type="text" name="som" id="som"  />
+      </div>
+      
+     <div>
+      
+     	<div class="wit uitlijn">
+		  	Zet uitkomst in eerste veld en tel verder op 
+		  	</div>
+		  	
+		  	<div class="blauw uitlijn">
+		  	Put result in first field and proceed to count
+		  	</div>
+		  	
+      
+      <button type="submit" name="submit" onclick="getset(this.form)" data-role="none">
+      Ga door<span class="blauw">&nbsp;&nbsp;&nbsp;Proceed</span>
+      </button>
+      </div>
+      
+     
+     
+    </fieldset>
+   
+    <a href="menu.html" data-direction="reverse" data-transition="flip">- menu -</a>
+    </form>
+    
+    <script>
+    
+    	function getset(f) {
+    	'use strict'
+    	f.waarde1.value=f.som.value;
+    	f.waarde2.value="0.00";
+    	f.waarde3.value="0.00";
+    	f.waarde4.value="0.00";
+    	f.waarde5.value="0.00";
+    	f.som.value="";
+    	}
+        
+        function Optellen() {
+            'use strict' 
+            var som;
+            
+            var g1 = document.getElementById('waarde1').value;
+            var g2 = document.getElementById('waarde2').value;
+            var g3 = document.getElementById('waarde3').value;
+            var g4 = document.getElementById('waarde4').value;
+            var g5 = document.getElementById('waarde5').value;
+            
+            var som = parseFloat(g1)+parseFloat(g2)+parseFloat(g3)+parseFloat(g4)+parseFloat(g5);
+            
+            document.getElementById('som').value = som;
+            return false;    
+        } 
+        
+        function init() {
+            'use strict'
+            document.getElementById('opteller').onsubmit = Optellen;
+        }
+        window.onload = init;
+        
+        </script>
+</div>
+
+</body>
+</html>

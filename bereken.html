@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>BTW app</title>
+	
+	<!-- PhoneGap -->
+	<script src="phonegap.js" type="text/javascript"></script>
+
+	<!-- jQuery Mobile -->
+	<link rel="stylesheet" href="css/jquery.mobile.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile.js"></script>
+
+	<!-- Jouw App -->
+	<script src="js/logic.js" type="text/javascript"></script>
+	<link href="css/btw.css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="main-container">
+    <!-- het formulier -->
+    <form action="" method="post" name="theForm" id="theForm" >
+        <fieldset>
+            <legend>BTW/korting<span class="blauw">&nbsp;&nbsp;&nbsp;VAT/discounts</span></legend>
+            
+			<div>
+            	<label for="aantal">Aantal<span class="blauw">&nbsp;&nbsp;&nbsp;Quantity</span></label>
+            	<input type="number" name="aantal" id="aantal" value="1" min="1" onfocus="this.value='';" required />
+            </div>
+            
+			<div>
+            	<label for="prijs">Prijs per stuk<span class="blauw">&nbsp;&nbsp;&nbsp;Price per unit</span></label>
+            	<input type="text" name="prijs" id="prijs" value="0.00" onfocus="this.value='';" required />
+            </div>
+            
+			<div>
+            	<label for="btw">BTW (%)  <span class="blauw">VAT (%)</span></label>
+            	<input type="text" name="btw"  id="btw" value="0.00" onfocus="this.value='';" required />
+            </div>
+             
+			<div>
+            	<label for="korting">Korting<span class="blauw">&nbsp;&nbsp;&nbsp;Discount</span></label>
+            	<input type="text"  name="korting" id="korting" value="0.00" onfocus="this.value='';" required />
+            </div>
+			
+			<div>
+            	<label for="kortproc">Korting (%)<span class="blauw">&nbsp;&nbsp;&nbsp;Discount (%)</span></label>
+            	<input type="text"  name="kortpoc" id="kortproc" value="0.00" onfocus="this.value='';" required />
+            </div>
+			
+			<div>
+				<a href="#" class="knop" onclick="bereken()" title="Bereken" >Bereken
+                <span class="blauw">&nbsp;&nbsp;&nbsp;Calculate</span> </a>
+			</div>
+            
+			<div>
+            	<label for="totaal">Totaal:<span class="blauw">&nbsp;&nbsp;&nbsp;Result:</span></label>
+            	<input type="text" name="totaal" id="totaal" value="0.00" />
+            </div>
+
+        </fieldset>
+    <div>
+    <a href="menu.html" data-transition="flip" data-direction="reverse">- menu -</a>
+    </div>
+    
+    </form>
+    <script> 
+		function bereken() {
+			'use strict' 
+			var totaal;
+			
+			var aantal = document.getElementById('aantal').value;
+			var prijs = document.getElementById('prijs').value;
+			var btw = document.getElementById('btw').value;
+			var korting = document.getElementById('korting').value;
+			var kortproc = document.getElementById('kortproc').value;
+			
+			totaal = aantal * prijs;
+			btw = btw/100 + 1;
+			totaal = totaal * btw;
+			totaal = totaal - korting;
+			kortproc = 1 - kortproc/100;
+			totaal = totaal * kortproc;
+
+			totaal = totaal.toFixed(2);
+			
+			document.getElementById('totaal').value = totaal;
+			return false;    
+		} 
+
+		function init() {
+			'use strict'
+			document.getElementById('theForm').onsubmit = bereken;
+		}
+		window.onload = init;    
+    </script>
+    
+
+    </div>
+</body>
+</html>
